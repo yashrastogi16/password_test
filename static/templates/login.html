@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if form.errors %}<p>Please correct the following fields:</p>{% endif %}
+<form method = 'POST' action = '/login/' role='form'> {% csrf_token %}
+<h1>Login!!</h1>
+<table>
+	<tr>
+		<td><label>Username:</label></td>
+		<td><input type="text" value="" name="username" value=""></td>
+	</tr>
+	<tr>
+		<td><label>Password:</label></td>
+		<td><input type="password" name="password"></td>
+	</tr>
+</table>
+<input type="Submit" value = "login" class="btn" />
+<input type="hidden" name = "next" value="{{ next }}"/>
+<a href = "{% url 'password_reset_recover' %}">Forget your password!!!</a>
+</form>
+{% endblock %}
